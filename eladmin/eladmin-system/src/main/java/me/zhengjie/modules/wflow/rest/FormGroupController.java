@@ -12,7 +12,7 @@ import java.util.List;
  * @date : 2020/9/17
  */
 @RestController
-@RequestMapping("admin/form")
+@RequestMapping("api/admin/form")
 public class FormGroupController {
 
     @Autowired

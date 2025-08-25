@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.experimental.SuperBuilder;
 import me.zhengjie.base.BaseEntity;
 
 import java.io.Serializable;
@@ -13,7 +14,7 @@ import java.util.Date;
 
 
 @Data
-@Builder
+@SuperBuilder
 @NoArgsConstructor
 @AllArgsConstructor
 public class OaFormGroup extends BaseEntity implements Serializable {
@@ -32,11 +33,6 @@ public class OaFormGroup extends BaseEntity implements Serializable {
     * 排序
     */
     private Integer sort;
-
-    /**
-    * 更新时间
-    */
-    private Date updated;
 
 
 }

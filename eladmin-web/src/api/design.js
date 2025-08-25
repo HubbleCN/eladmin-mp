@@ -3,7 +3,7 @@ import request from '@/utils/request'
 // 查询表单组
 export function getFormGroups(param) {
   return request({
-    url: 'admin/form/group',
+    url: 'api/admin/form/group',
     method: 'get',
     params: param
   })
@@ -12,7 +12,7 @@ export function getFormGroups(param) {
 // 表单排序
 export function groupItemsSort(param) {
   return request({
-    url: 'admin/form/group/sort',
+    url: 'api/admin/form/group/sort',
     method: 'put',
     data: param
   })
@@ -21,7 +21,7 @@ export function groupItemsSort(param) {
 // 更新表单组
 export function updateGroup(param, method) {
   return request({
-    url: 'admin/form/group',
+    url: 'api/admin/form/group',
     method: method,
     params: param
   })
@@ -30,7 +30,7 @@ export function updateGroup(param, method) {
 // 获取表单分组
 export function getGroup() {
   return request({
-    url: 'admin/form/group/list',
+    url: 'api/admin/form/group/list',
     method: 'get'
   })
 }
@@ -38,7 +38,7 @@ export function getGroup() {
 // 更新表单
 export function updateForm(param) {
   return request({
-    url: 'admin/form',
+    url: 'api/admin/form',
     method: 'put',
     params: param
   })
@@ -46,7 +46,7 @@ export function updateForm(param) {
 
 export function createForm(param) {
   return request({
-    url: 'admin/form',
+    url: 'api/admin/form',
     method: 'post',
     data: param
   })
@@ -55,7 +55,7 @@ export function createForm(param) {
 // 查询表单详情
 export function getFormDetail(id) {
   return request({
-    url: 'admin/form/detail/' + id,
+    url: 'api/admin/form/detail/' + id,
     method: 'get'
   })
 }
@@ -63,7 +63,7 @@ export function getFormDetail(id) {
 // 更新表单详情
 export function updateFormDetail(param) {
   return request({
-    url: 'admin/form/detail',
+    url: 'api/admin/form/detail',
     method: 'put',
     data: param
   })

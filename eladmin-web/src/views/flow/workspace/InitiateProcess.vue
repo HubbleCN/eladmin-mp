@@ -60,7 +60,7 @@ export default {
       getFormDetail(formId).then(rsp => {
         this.loading = false
         console.log(rsp.data)
-        const form = rsp.data
+        const form = rsp
         form.logo = JSON.parse(form.logo)
         form.settings = JSON.parse(form.settings)
         form.formItems = JSON.parse(form.formItems)

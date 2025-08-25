@@ -165,7 +165,7 @@ export default {
     },
     getGroups() {
       getFormGroups().then(rsp => {
-        this.fromGroup = rsp.data
+        this.fromGroup = rsp
       }).catch(err => this.$message.error('获取分组异常'))
     },
     addGroup() {

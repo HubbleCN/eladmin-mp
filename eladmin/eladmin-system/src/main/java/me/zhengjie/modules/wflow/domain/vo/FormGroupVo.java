@@ -40,7 +40,7 @@ public class FormGroupVo {
 
         private String remark;
 
-        private Date updated;
+        private Date updateTime;
     }
 
 

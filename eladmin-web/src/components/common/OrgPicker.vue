@@ -149,7 +149,7 @@ export default {
       this.loading = true
       getOrgTree({ deptId: this.nowDeptId, type: this.type }).then(rsp => {
         this.loading = false
-        this.nodes = rsp.data
+        this.nodes = rsp
         this.selectToLeft()
       }).catch(err => {
         this.loading = false
@@ -168,7 +168,7 @@ export default {
       this.loading = true
       getUserByName({ userName: userName }).then(rsp => {
         this.loading = false
-        this.searchUsers = rsp.data
+        this.searchUsers = rsp
         this.selectToLeft()
       }).catch(err => {
         this.loading = false

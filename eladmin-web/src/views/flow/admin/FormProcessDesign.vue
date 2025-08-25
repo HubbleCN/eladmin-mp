@@ -105,7 +105,7 @@ export default {
     loadFormInfo(formId) {
       getFormDetail(formId).then(rsp => {
         console.log(rsp.data)
-        const form = rsp.data
+        const form = rsp
         form.logo = JSON.parse(form.logo)
         form.settings = JSON.parse(form.settings)
         form.formItems = JSON.parse(form.formItems)

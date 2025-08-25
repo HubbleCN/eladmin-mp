@@ -1,9 +1,6 @@
 import Vue from 'vue'
-
 import Cookies from 'js-cookie'
-
 import 'normalize.css/normalize.css'
-
 import Element from 'element-ui'
 
 // 数据字典
@@ -16,6 +13,13 @@ import './assets/styles/element-variables.scss'
 
 // global css
 import './assets/styles/index.scss'
+
+require('@/utils/CustomUtil')
+
+import "@/assets/iconfont/iconfont.css"
+
+import CommonComponents from '@/components/common/index.js'
+Vue.use(CommonComponents);
 
 import App from './App'
 import store from './store'

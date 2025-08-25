@@ -1,7 +1,9 @@
 package me.zhengjie.modules.wflow.service.impl;
 
 import cn.hutool.core.util.IdUtil;
+import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import me.zhengjie.modules.wflow.domain.OaFormGroup;
 import me.zhengjie.modules.wflow.domain.OaForm;
 import me.zhengjie.modules.wflow.domain.vo.FormGroupVo;
@@ -43,18 +45,22 @@ public class FormGroupServiceImpl implements FormGroupService {
                     .items(new LinkedList<>())
                     .build();
             formGroupVos.add(formGroupVo);
-            formsMapper.selectList(new QueryWrapper<OaForm>()
-                    .select("form_id", "form_name", "logo", "settings", "remark", "is_stop", "updated")
-                    .eq("is_delete", false)
-                    .eq("group_id", group.getGroupId())
-                    .orderByAsc("sort")).forEach(from -> {
+            formsMapper.selectList(
+                    Wrappers.lambdaQuery(OaForm.class)
+                            .select(OaForm::getFormId, OaForm::getFormName,
+                                    OaForm::getSettings, OaForm::getLogo,
+                                    OaForm::getRemark, OaForm::getIsStop, OaForm::getUpdateTime)
+                            .eq(OaForm::getIsDelete, false)
+                            .eq(OaForm::getGroupId, group.getGroupId())
+                            .orderByAsc(OaForm::getSort)
+            ).forEach(from -> {
                 formGroupVo.getItems().add(FormGroupVo.Form.builder()
                         .formId(from.getFormId())
                         .formName(from.getFormName())
                         .logo(from.getLogo())
                         .remark(from.getRemark())
                         .isStop(from.getIsStop())
-                        .updated(from.getUpdated())
+                        .updateTime(from.getUpdateTime())
                         .build());
             });
         });
@@ -80,7 +86,8 @@ public class FormGroupServiceImpl implements FormGroupService {
 
     @Override
     public Object createFormGroup(String name) {
-        groupsMapper.insert(OaFormGroup.builder().sort(1).groupName(name).updated(new Date()).build());
+        groupsMapper.insert(OaFormGroup.builder().sort(1).groupName(name)
+                .updateTime(new Date()).build());
         return R.ok("新增成功");
     }
 
@@ -101,7 +108,7 @@ public class FormGroupServiceImpl implements FormGroupService {
         forms.setSort(null);
         forms.setIsDelete(null);
         forms.setIsStop(null);
-        forms.setUpdated(new Date());
+        forms.setUpdateTime(new Date());
         formsMapper.updateById(forms);
         return R.ok("操作成功");
     }
@@ -136,8 +143,8 @@ public class FormGroupServiceImpl implements FormGroupService {
                 .sort(0)
                 .isStop(false)
                 .isDelete(false)
-                .created(time)
-                .updated(time)
+                .createTime(time)
+                .updateTime(time)
                 .build();
         formsMapper.insert(oaForm);
         return R.ok("创建表单成功");

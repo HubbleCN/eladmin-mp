@@ -59,7 +59,7 @@
             </div>
             <div class="desp">{{ item.remark }}</div>
             <div>
-              <span>最后更新时间：{{ item.updated }}</span>
+              <span>最后更新时间：{{ item.updateTime }}</span>
             </div>
             <div>
               <el-button type="text" icon="el-icon-edit-outline" size="mini" @click="editFrom(item, group)">编辑</el-button>
@@ -121,7 +121,7 @@ export default {
   methods: {
     getGroups() {
       getFormGroups().then(rsp => {
-        this.groups = rsp.data
+        this.groups = rsp
         this.groups.forEach(group => {
           group.items.forEach(item => {
             item.logo = JSON.parse(item.logo)

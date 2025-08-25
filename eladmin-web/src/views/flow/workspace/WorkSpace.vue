@@ -100,14 +100,14 @@ export default {
   methods: {
     getGroups() {
       getFormGroups().then(rsp => {
-        this.formList.list = rsp.data
+        this.formList.list = rsp
         this.formList.list.forEach(group => {
           this.actives.push(group.name)
           group.items.forEach(item => {
             item.logo = JSON.parse(item.logo)
           })
         })
-        this.groups = rsp.data
+        this.groups = rsp
       }).catch(err => this.$message.error('获取分组异常'))
     },
     enterItem(item) {

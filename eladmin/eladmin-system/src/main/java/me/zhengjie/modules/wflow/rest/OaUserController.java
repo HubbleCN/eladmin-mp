@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @date : 2022/6/27
  */
 @RestController
-@RequestMapping("oa/org")
+@RequestMapping("api/oa/org")
 public class OaUserController {
 
     @Autowired
